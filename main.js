@@ -60,11 +60,35 @@ const pies = [
             </div>
             </div>
             `;
-        }
+        };
         domString += '</div>';
       //print them to the dom
       printToDom("pie-zone", domString);
 
-  }
+  };
 
   cardBuilder(pies);
+
+  const buttonClickEvent = (e) => {
+    const instructor = e.target.id;
+    const selectedInstructor = []
+    for(i=0; i < pies.length; i++) {
+      const pie = pies[i]
+      if (pie.instructor === instructor) {
+        selectedInstructor.push(pie)
+      };
+    } ;
+     if(instructor === 'all') {
+      cardBuilder(pies);
+     } else {
+       cardBuilder(selectedInstructor)
+     };
+  };
+
+
+  document.getElementById('zoe').addEventListener('click', buttonClickEvent);
+  document.getElementById('callan').addEventListener('click', buttonClickEvent);
+  document.getElementById('michael').addEventListener('click', buttonClickEvent);
+  document.getElementById('all').addEventListener('click', buttonClickEvent);
+
+  

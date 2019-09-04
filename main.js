@@ -45,11 +45,12 @@ const pies = [
 
   const cardBuilder = (pieArr) => {
       //build giant string of pie cards
-      let domString = '';
+      let domString = '<div class="row">';
         for(let i = 0; i < pieArr.length; i++) {
             const currentPie =pieArr[i];
             domString += 
             `
+            <div class="col-3">
             <div class="card">
                 <img src="${currentPie.imageUrl}" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -57,8 +58,10 @@ const pies = [
                     <p class="card-text">${currentPie.instructor}, ${currentPie.iceCream}</p>
                 </div>
             </div>
+            </div>
             `;
         }
+        domString += '</div>';
       //print them to the dom
       printToDom("pie-zone", domString);
 
